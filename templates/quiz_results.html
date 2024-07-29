@@ -1,0 +1,112 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700&display=swap">
+    <style>
+        .header {
+            background-color: #600209; /* Dark red */
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .correct {
+            color: green;
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .incorrect {
+            color: red;
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .review-list {
+            list-style: none;
+            padding: 0;
+        }
+        .review-list li {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .review-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #464646;
+            margin-bottom: 15px;
+        }
+        .button {
+            background-color: #ff8e26; /* Accent color for button */
+            font-weight: bold;
+            padding: 10px 15px;
+            border: none;
+            margin-top: 20px;
+        }
+        #homeButton {
+            background-color: #ff8e26; /* Accent color for button */
+            color: white; /* Make text color white */
+            font-weight: bold;
+            padding: 10px 20px; /* Adjust padding as needed */
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer; /* Changes cursor to indicate this is clickable */
+            text-decoration: none; /* Removes underline from text */
+            display: inline-block; /* Allows padding and width to be set */
+        }
+        /* You can also add hover effect for better user experience */
+        #homeButton:hover {
+            background-color: #e57c1f; /* A slightly darker shade for hover state */
+        }
+    </style>
+</head>
+<body>
+    <div class="header container">Quiz Results</div>
+    
+    <div class="container">
+        <div class="correct">Correct Answers: {{ right_answers }}</div>
+        <div class="incorrect">Incorrect Answers: {{ wrong_answers }}</div>
+
+        {% if review_topics %}
+        <div class="review-section">
+            <div class="review-title">Topics to Review</div>
+            <ul class="review-list">
+                {% for topic in review_topics %}
+                    <li><a href="{{ url_for('main.index', val=topic.0) }}">{{ topic.1 }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <button id="homeButton" onclick="window.location.href='/'">Go back home</button>
+        <button id="homeButton" onclick=resetQuizAndRedirect()>Try Again</button>
+        <button id="homeButton" onclick="window.location.href='/generate__workout_pdf'">View your routine</button>
+    </div>
+</body>
+
+
+<script>
+    function resetQuizAndRedirect() {
+        fetch('/reset_right_wrong', {
+            method: 'GET' 
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Quiz reset successful:', data);
+            window.location.href = '/view_quiz/0'; 
+        })
+        .catch(error => {
+            console.error('Error resetting quiz:', error);
+        });
+    }
+</script>

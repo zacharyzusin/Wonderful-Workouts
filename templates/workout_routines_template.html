@@ -1,0 +1,20 @@
+<head>
+    <meta charset="utf-8">
+    <title>Workout Routines</title>
+</head>
+<body>
+    <h1>Routine A</h1>
+    <ul>
+        {% for workout in routine_a %}
+            <li>{{ workout }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h1>Routine B</h1>
+    <ul>
+        {% for workout in routine_b %}
+            <li>{{ workout }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

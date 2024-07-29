@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <title>Workout</title> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700&display=swap">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <style>
+    .header{
+        background-color: rgb(96, 2, 9);
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .container {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+        color: rgb(117, 116, 116);
+    }
+    .info-title {
+        padding-top: 10px;
+        font-size: 38px;
+        text-align: center;
+    }
+    .back-btn {
+        padding: 10px 10px 10px 10px;
+    }
+    .vertical-divider {
+        border-right: 2px solid rgba(161, 161, 161, 0.5); /* Darker and thicker border */
+        min-height: 50px; /* Set a minimum height */
+        box-sizing: border-box; /* Include border in width calculation */
+    }
+    #choices {
+        list-style-type: none; /* Remove bullet points */
+    }
+
+    #choices li {
+        margin-bottom: 5px; /* Add some spacing between items */
+    }
+    #choices input[type="checkbox"] {
+        transform: scale(1.5); /* Increase the size of the checkboxes */
+        margin-right: 10px; /* Add some spacing between the checkbox and the text */
+    }
+    #choices img {
+        display: block; /* Make images block-level elements */
+        width: 200px; /* Set width */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: 5px; /* Add some spacing between the image and the checkbox */
+    }
+    .response {
+        font-size: 26px;
+        text-align: center;
+        padding: 10px 0px 25px 0px;
+    }
+    .correct {
+        color: rgb(1, 185, 1);
+        text-align: center;
+        padding: 25px 0px 10px 0px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+    .incorrect {
+        color: red;
+        text-align: center;
+        padding: 25px 0px 10px 0px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+    .review {
+        text-align:center;
+    }
+    .next {
+        text-align: center;
+        padding: 25px 0px 0px 0px;
+    }
+    .accent-btn {
+        background-color: rgb(255,142,38);
+        font-weight:bold;
+    }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- <script src="result.js"></script> -->
+    <script>
+        var questionIndex = {{ index|tojson }};
+        var isRight = {{ isCorrect|tojson }};
+        var totalQuestions = {{numQuestions | tojson}}
+    </script>
+    <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+ 
+<div class="container">
+
+</div>
+ 
+ 
+</body>
+</html>

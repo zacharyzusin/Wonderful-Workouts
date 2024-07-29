@@ -1,0 +1,234 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700&display=swap">
+
+<style>
+    body {
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .routineBottomList {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 5px;
+    margin: 0 10px;
+  }
+  .accent-btn {
+      background-color: rgb(255,142,38);
+      font-weight:bold;
+      /* color:white; */
+  }
+  .routineBottomList li {
+    margin: 0 10px; /* Adjust the spacing between items */
+  }
+
+  .routineList li {
+    margin: 0 10px; /* Adjust the spacing between items */
+  }
+    .container_row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 80%;
+    }
+    .back-btn {
+      padding: 10px 10px 10px 10px;
+  }
+    
+    .silhouette-container,
+    .routine-container {
+        flex: 1;
+        margin: 0 10px; /* Adjust margin as needed */
+        display: flex; /* Use flexbox */
+    }
+
+    .routine {
+        border: 1px solid #ccc; /* Add borders for visual separation */
+        padding: 10px; /* Add padding for spacing */
+        flex: 1; /* Equal width for routines */
+    }
+    
+    .routine h2 {
+      margin-top: 0;
+    }
+    
+    .routineList {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .routineList li {
+      margin-bottom: 5px;
+      padding: 5px;
+      font-size: 1.2em;
+      cursor: grab;
+    }
+
+    .routine p {
+    margin-top: 0; /* Remove top margin for headings */
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+    white-space: nowrap; /* Prevent heading from wrapping onto multiple lines */
+    }
+
+    .body-text {
+    position: absolute;
+    bottom: -60px; /* Adjust the top position as needed */
+    left: 50%; /* Align the text in the center */
+    transform: translateX(-50%); /* Center the text horizontally */
+    z-index: 2; /* Ensure the text appears above the image */
+    }
+    
+    .silhouette {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .silhouette-front {
+      width: 200px;
+      height: 400px;
+      position: relative;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .silhouette-back {
+      width: 200px;
+      height: 400px;
+      position: relative;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .silhouette-front-2 {
+      width: 200px;
+      height: 400px;
+      position: relative;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .silhouette-back-2 {
+      width: 200px;
+      height: 400px;
+      position: relative;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+    
+    
+    
+    
+    .red {
+      background-color: red;
+      opacity: 0.5;
+    }
+
+    .red-overlay-chest {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Adjust the width as needed */
+    height: 30%;
+    background-color: rgba(255, 0, 0, 0.5); /* Adjust the opacity and color as needed */
+    z-index: 1; /* Ensure the overlay is above the image */
+    }
+    .red-overlay-arms {
+    position: absolute;
+    top: 30%; /* Adjust the top position as needed */
+    height: 20%; /* Adjust the height as needed */
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 0, 0, 0.5); /* Adjust the opacity and color as needed */
+    z-index: 1; /* Ensure the overlay is above the image */
+    }
+    .red-overlay-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Adjust the width as needed */
+    height: 30%;
+    background-color: rgba(255, 0, 0, 0.5); /* Adjust the opacity and color as needed */
+    z-index: 1; /* Ensure the overlay is above the image */
+    }
+    .red-overlay-legs {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Adjust the width as needed */
+    height: 50%;
+    background-color: rgba(255, 0, 0, 0.5); /* Adjust the opacity and color as needed */
+    z-index: 1; /* Ensure the overlay is above the image */
+    }
+
+    
+    .hide {
+      display: none;
+      position: absolute;
+    }
+    .header {
+          background-color: #600209; /* Dark red */
+          font-size: 30px;
+          font-weight: bold;
+          color: white;
+          text-align: center;
+          padding: 20px 0;
+      }
+    .info-title {
+      margin: 0 auto;
+    }
+      #homeButton {
+          background-color: #ff8e26; /* Accent color for button */
+          color: white; /* Make text color white */
+          font-weight: bold;
+          padding: 10px 20px; /* Adjust padding as needed */
+          border: none;
+          border-radius: 5px; /* Optional: if you want rounded corners */
+          margin-top: 20px;
+          cursor: pointer; /* Changes cursor to indicate this is clickable */
+          text-decoration: none; /* Removes underline from text */
+          display: inline-block; /* Allows padding and width to be set */
+      }
+
+      /* You can also add hover effect for better user experience */
+      #homeButton:hover {
+          background-color: #e57c1f; /* A slightly darker shade for hover state */
+      }
+</style>
+
+
+    <div class="header">
+        <div class="info-title">
+            <h1>Wonderful Workouts</h1>
+        </div>
+    </div>
+
+    <div class="content" style="font-family: 'Montserrat', sans-serif; color: #7d7b7b;">
+        <h4>Ready to start weight lifting? Here, you learn a <b>variety of exercises</b>, which <b>parts of the body</b> they work, and <b>build your own custom workout routine</b>! Click on the button below to start.</h4>
+
+        <div class="image-container" id="home-image">
+            <img src="https://t3.ftcdn.net/jpg/02/24/24/06/360_F_224240638_9cg17hGtJw54J4kLjLNsU6EfYiBoJUcI.jpg" alt="FitZone" class="main-image">
+        </div>
+
+        <div style="text-align: center; margin: 20px;">
+            <a href="/create_workout" class="button accent-btn" id="homeButton">Get Started</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

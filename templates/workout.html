@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Details</title>
+    <style>
+        .workout-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="workout-container" class="workout-container">
+        <h2 id="workout-name">Loading...</h2>
+        <p id="workout-description"></p>
+        <div class="images-container">
+            <img id="workout-image" src="" alt="Workout Image">
+            <img id="workout-gif-link" src="" alt="Workout GIF" style="display:none;"> <!-- Initially hidden -->
+        </div>
+        <p>Muscle Groups: <span id="muscle-groups"></span></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/workout.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadWorkout({{ index|tojson }});
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}
